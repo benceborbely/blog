@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Author
  *
- * @ORM\Table()
+ * @ORM\Table(name="author")
  * @ORM\Entity
  */
 class Author
@@ -136,4 +136,25 @@ class Author
     {
         return $this->email;
     }
+
+    /**
+     * Get posts
+     *
+     * @return ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
+
+    /**
+     * Add post
+     *
+     * @param Post $post
+     */
+    public function addPost(Post $post)
+    {
+        $this->posts->add($post);
+    }
+
 }

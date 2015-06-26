@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Post
  *
- * @ORM\Table()
+ * @ORM\Table(name="post")
  * @ORM\Entity
  */
 class Post
@@ -54,7 +54,6 @@ class Post
      * @ORM\Column(name="lastUpdate", type="datetime")
      */
     private $lastUpdate;
-    
 
     /**
      * Get id
