@@ -1,4 +1,3 @@
 blog_app_blog:
     resource: "@BlogAppBlogBundle/Resources/config/routing.yml"
     prefix:   /
-
