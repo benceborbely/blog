@@ -1,0 +1,6 @@
+{% for post in posts %}
+    {{ post.getLastUpdate|date("Y-m-d") }}<br />
+    {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }}<br />
+    {{ post.getTitle }}<br />
+    {{ post.getContent }}<br />
+{% endfor %}
