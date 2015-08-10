@@ -8,10 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
  * Post
  *
  * @ORM\Table(name="post")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="BlogApp\BlogBundle\Repository\PostRepository")
  */
 class Post
 {
+
+    /**
+     * @const integer
+     */
+    const POSTS_PER_PAGE = 2;
+
     /**
      * @var integer
      *
@@ -181,4 +187,3 @@ class Post
     }
 
 }
-

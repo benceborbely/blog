@@ -1,6 +1,16 @@
-{% for post in posts %}
-    {{ post.getLastUpdate|date("Y-m-d") }}<br />
-    {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }}<br />
-    {{ post.getTitle }}<br />
-    {{ post.getContent }}<br />
-{% endfor %}
+{% if posts is not empty %}
+    {% for post in posts %}
+        {{ post.getLastUpdate|date("Y-m-d H:i") }}<br />
+        {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }}<br />
+        {{ post.getTitle }}<br />
+        {{ post.getContent }}<br />
+        <br/>
+    {% endfor %}
+    {% for i in 1..pages%}
+         <a href="{{ path('blog_app_blog_post_list', {'page': i}) }}">
+             {{ i }}
+         </a>
+    {% endfor %}
+{% else %}
+    Posts not found!
+{% endif %}

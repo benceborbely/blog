@@ -1,3 +1,4 @@
 blog_app_blog_post_list:
-    path:     /
-    defaults: { _controller: BlogAppBlogBundle:Post:list }
+    path:     /{page}
+    defaults: { _controller: BlogAppBlogBundle:Post:list, page: 1 }
+    requirements: { page: "\d+" }
