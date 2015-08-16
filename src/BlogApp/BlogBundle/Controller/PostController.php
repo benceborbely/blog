@@ -31,4 +31,19 @@ class PostController extends Controller
         return $this->render('BlogAppBlogBundle:Post:list.html.twig', $data);
     }
 
+    /**
+     * View a post
+     *
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function viewAction($id)
+    {
+        $post = $this->getDoctrine()
+                        ->getManager()
+                        ->find('BlogApp\BlogBundle\Entity\Post', $id);
+
+        return $this->render('BlogAppBlogBundle:Post:view.html.twig', array('post' => $post));
+    }
+
 }

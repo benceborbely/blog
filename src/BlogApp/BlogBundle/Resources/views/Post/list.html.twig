@@ -2,7 +2,9 @@
     {% for post in posts %}
         {{ post.getLastUpdate|date("Y-m-d H:i") }}<br />
         {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }}<br />
-        {{ post.getTitle }}<br />
+        <a href="{{ path('blog_app_blog_post_view', {'id': post.getId}) }}">
+            {{ post.getTitle }}
+        </a><br />
         {{ post.getContent }}<br />
         <br/>
     {% endfor %}
