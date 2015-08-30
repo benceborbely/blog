@@ -2,6 +2,7 @@
 
 namespace BlogApp\BlogBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -60,6 +61,21 @@ class Post
      * @ORM\Column(name="lastUpdate", type="datetime")
      */
     private $lastUpdate;
+
+    /**
+     * @var ArrayCollection
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     **/
+    private $comments;
+
+    /**
+     * construct
+     */
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -184,6 +200,22 @@ class Post
     public function getLastUpdate()
     {
         return $this->lastUpdate;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment $comment
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments ->add($comment);
     }
 
 }

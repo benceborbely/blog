@@ -46,7 +46,7 @@ class Author
     /**
      * @var ArrayCollection
      *
-     * @ORM\OneToMany(targetEntity="Post", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="Post", mappedBy="author")
      **/
     private $posts;
 
