@@ -1,3 +1,18 @@
 {{ post.getTitle }}<br />
 by {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }} on {{ post.getLastUpdate|date("Y-m-d") }}<br /><br >
-{{ post.getContent }}<br />
+{{ post.getContent }}<br /><br />
+Comments:<br />
+{% for comment in post.getComments %}
+    {% if comment.isApproved %}
+        {{ comment.content }}<br />
+        by {{ comment.getUsername }} on {{ comment.getCreatedDate|date("Y-m-d H:i") }}<br /><br />
+    {% endif %}
+{% endfor %}
+{{ form_start(form) }}
+        {{ form_label(form.username, 'Username:') }}<br />
+        {{ form_errors(form.username) }}
+        {{ form_widget(form.username) }}<br /><br />
+        {{ form_errors(form.content) }}
+        {{ form_widget(form.content) }}
+{{ form_end(form) }}
+<a href="{{ path('blog_app_blog_post_list', {'page': page}) }}"><< Back</a>

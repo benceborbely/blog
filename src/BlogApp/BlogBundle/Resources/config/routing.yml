@@ -3,6 +3,6 @@ blog_app_blog_post_list:
     defaults: { _controller: BlogAppBlogBundle:Post:list, page: 1 }
     requirements: { page: "\d+" }
 blog_app_blog_post_view:
-    path:     /view/{id}
-    defaults: { _controller: BlogAppBlogBundle:Post:view }
-    requirements: { id: "\d+" }
+    path:     /view/{id}/{page}
+    defaults: { _controller: BlogAppBlogBundle:Post:view , page: 1}
+    requirements: { id: "\d+", page: "\d+"}

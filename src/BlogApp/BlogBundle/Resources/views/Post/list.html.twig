@@ -1,17 +1,21 @@
+<h1>Posts</h1>
+
 {% if posts is not empty %}
     {% for post in posts %}
-        {{ post.getLastUpdate|date("Y-m-d H:i") }}<br />
-        {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }}<br />
-        <a href="{{ path('blog_app_blog_post_view', {'id': post.getId}) }}">
-            {{ post.getTitle }}
-        </a><br />
-        {{ post.getContent }}<br />
+        <div class="post">
+            {{ post.getLastUpdate|date("Y-m-d H:i") }}
+            <br />
+            {{ post.getAuthor.getLastName ~ ' ' ~post.getAuthor.getFirstName }}
+            <br />
+            <a href="{{ path('blog_app_blog_post_view', {'id': post.getId, 'page': page}) }}">{{ post.getTitle }}</a>
+            <br />
+            {{ post.getContent }}
+            <br />
+        </div>
         <br/>
     {% endfor %}
     {% for i in 1..pages%}
-         <a href="{{ path('blog_app_blog_post_list', {'page': i}) }}">
-             {{ i }}
-         </a>
+         <a href="{{ path('blog_app_blog_post_list', {'page': i}) }}">{{ i }}</a>
     {% endfor %}
 {% else %}
     Posts not found!
