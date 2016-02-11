@@ -15,7 +15,7 @@ class PostController extends Controller
 {
 
     /**
-     * List posts
+     * Listing posts
      *
      * @param int $page - page number
      * @return \Symfony\Component\HttpFoundation\Response
